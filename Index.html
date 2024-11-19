@@ -193,12 +193,23 @@
                 <div class="mb-3">
                   <label for="telefono" class="form-label">telefono</label>
                   <input
-                    type="number"
+                    type="tel"
+                    pattern="^[0-9][10]$"
                     class="form-control"
                     id="telefono"
                     minlength="8"
                     maxlength="50"
                     placeholder="ej: 38156382"
+                    required
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="url" class="form-label">URL de la imagen</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="url"
                     required
                   />
                 </div>

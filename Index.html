@@ -49,104 +49,7 @@
     </header>
 
     <main class="container my-4">
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="Modal"
-        tabindex="-1"
-        aria-labelledby="ModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="ModalLabel">Agregar Contactos</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label for="email" class="form-label">email</label>
-                  <input
-                    minlength="5"
-                    maxlength="100"
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="ej: nombredecontacto@gmail.com"
-                  />
-                </div>
-
-                <div class="mb-3">
-                  <label for="Nombre" class="form-label">nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="Nombre"
-                    minlength="3"
-                    maxlength="50"
-                    placeholder="ej: Matias"
-                  />
-                </div>
-
-                <div class="mb-3">
-                  <label for="apellido" class="form-label">apellido</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="apellido"
-                    minlength="4"
-                    maxlength="70"
-                    placeholder="ej:  sanchez"
-                  />
-                </div>
-
-                <div class="mb-3">
-                  <label for="apodo" class="form-label">apodo</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="apodo"
-                    minlength="4"
-                    maxlength="70"
-                    placeholder="ej:  Mati"
-                  />
-                </div>
-
-                <div class="mb-3">
-                  <label for="telefono" class="form-label">telefono</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="telefono"
-                    minlength="8"
-                    maxlength="50"
-                    placeholder="ej: 38156382"
-                  />
-                </div>
-
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Cerrar
-                  </button>
-                  <button type="button" class="btn btn-primary">
-                    Guardar contacto
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+     
 
       <div class="d-flex justify-content-between">
         <h1>Lista de contactos</h1>
@@ -212,6 +115,106 @@
           </tbody>
         </table>
       </section>
+
+       <!-- Modal -->
+       <section
+       class="modal fade"
+       id="Modal"
+       tabindex="-1"
+       aria-labelledby="ModalLabel"
+       aria-hidden="true"
+     >
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="ModalLabel">Agregar Contactos</h5>
+             <button
+               type="button"
+               class="btn-close"
+               data-bs-dismiss="modal"
+               aria-label="Close"
+             ></button>
+           </div>
+
+           <div class="modal-body">
+             <form>
+               <div class="mb-3">
+                 <label for="email" class="form-label">email</label>
+                 <input
+                   minlength="5"
+                   maxlength="100"
+                   type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="ej: nombredecontacto@gmail.com"
+                 />
+               </div>
+
+               <div class="mb-3">
+                 <label for="Nombre" class="form-label">nombre</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="Nombre"
+                   minlength="3"
+                   maxlength="50"
+                   placeholder="ej: Matias"
+                 />
+               </div>
+
+               <div class="mb-3">
+                 <label for="apellido" class="form-label">apellido</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="apellido"
+                   minlength="4"
+                   maxlength="70"
+                   placeholder="ej:  sanchez"
+                 />
+               </div>
+
+               <div class="mb-3">
+                 <label for="apodo" class="form-label">apodo</label>
+                 <input
+                   type="text"
+                   class="form-control"
+                   id="apodo"
+                   minlength="4"
+                   maxlength="70"
+                   placeholder="ej:  Mati"
+                 />
+               </div>
+
+               <div class="mb-3">
+                 <label for="telefono" class="form-label">telefono</label>
+                 <input
+                   type="number"
+                   class="form-control"
+                   id="telefono"
+                   minlength="8"
+                   maxlength="50"
+                   placeholder="ej: 38156382"
+                 />
+               </div>
+
+               <div class="modal-footer">
+                 <button
+                   type="button"
+                   class="btn btn-secondary"
+                   data-bs-dismiss="modal"
+                 >
+                   Cerrar
+                 </button>
+                 <button type="submit" class="btn btn-primary">
+                   Guardar contacto
+                 </button>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </section>
     </main>
 
     <footer class="bg-dark py-4">

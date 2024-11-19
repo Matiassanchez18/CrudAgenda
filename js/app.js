@@ -3,20 +3,35 @@
 import Contacto from "./classContacto.js"
 
 // declaro variables globales
-const nuevoContacto = new Contacto('Juan', 'Perez', '3815646882','juanpereaz@gmail.com', 'Juancho', 'http://127.0.0.1:5500/Index.html?')
-console.log(nuevoContacto)
+const listaContactos = []; 
 
 const modalContacto = new bootstrap.Modal(document.querySelector('#Modal'));
 const btnAgregar = document.querySelector('#BotonAgregar')
+const Form = document.querySelector('form')
+const email = document.querySelector('#email')
+const nombre = document.querySelector('#Nombre')
+const apellido = document.querySelector('#apellido')
+const apodo = document.querySelector('#apodo')
+const telefono = document.querySelector('#telefono')
+const url = document.querySelector('#url')
 
 
 
-console.log(btnAgregar)
+
 // funciones
 function abrirModal(){
-    
 modalContacto.show()
+}
+
+function crearContacto(e){
+    e.preventDefault();
+    // validar datos de form
+    const nuevoContacto = new Contacto(nombre.value, apellido.value, telefono.value, email.value, apodo.value, url.value)
+    
+    listaContactos.push(nuevoContacto)
+    console.log(listaContactos)
 }
 
 // el resto de la logica del proyexto
 btnAgregar.addEventListener('click', abrirModal)
+Form.addEventListener('submit', crearContacto)

@@ -3,7 +3,9 @@
 import Contacto from "./classContacto.js"
 
 // declaro variables globales
-const listaContactos = [];
+
+// transforma la informacion de json a una normal de js 
+const listaContactos = JSON.parse(localStorage.getItem('agendakey')) || []
 
 const modalContacto = new bootstrap.Modal(document.querySelector('#Modal'));
 const btnAgregar = document.querySelector('#BotonAgregar')

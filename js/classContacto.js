@@ -23,58 +23,72 @@ export default class Contacto {
 
     }
     // agregar get y set
-    get id(){
+    get id() {
         return this.#id
     }
 
-    set id(nuevoID){
-   this.#id = nuevoID
+    set id(value) {
+        this.#id = value
     }
 
 
-    get nombre(){
+    get nombre() {
         return this.#nombre
     }
 
-    set nombre(nuevoNombre){
-        this.#nombre = nuevoNombre
+    set nombre(value) {
+        this.#nombre = value
     }
 
 
-    get apellido(){
+    get apellido() {
         return this.#apellido
     }
-    set apellido(nuevoApellido){
-        this.#apellido = nuevoApellido
+    set apellido(value) {
+        this.#apellido = value
     }
 
-    get telefono(){
+    get telefono() {
         return this.#telefono
     }
-    set telefono(nuevotelefono){
-        this.#telefono = nuevotelefono
+    set telefono(value) {
+        this.#telefono = value
     }
 
-    get mail(){
+    get mail() {
         return this.#mail
     }
-    set mail(nuevomail){
-        this.#mail = nuevomail
+    set mail(nuevomail) {
+        this.#mail = value
     }
 
-    get apodo(){
+    get apodo() {
         return this.#apodo
     }
-    set apodo(nuevoapodo){
-        this.#apodo = nuevoapodo
+    set apodo(value) {
+        this.#apodo = value
     }
 
-    get url(){
+    get url() {
         return this.#url
     }
-    set url(nuevourl){
-        this.#url = nuevourl
+    set url(value) {
+        this.#url = value
     }
 
-  
+
+    // metodo para que funcione JSON.stringify
+    toJSON(){
+     return{
+        id: this.id, 
+        nombre: this.nombre,
+        apellido: this.apellido,
+        telefono: this.telefono,
+        mail: this.mail,
+        apodo: this.apodo,
+        url: this.url
+
+     }
+    }
+
 }

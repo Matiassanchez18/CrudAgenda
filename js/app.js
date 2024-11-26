@@ -46,6 +46,44 @@ function guardarLocalStorage() {
     localStorage.setItem('agendakey', JSON.stringify(listaContactos));
 }
 
+
+function crearDatosTabla() {
+    // preguntar si el array tiene informacion 
+    if (listaContactos.length > 0) {
+        // dibujar un afila por cada elemento del array, el map recorre toda el array
+     listaContactos.map((Contacto, indice) => dibujarFila(Contacto, indice + 1) )
+
+    }
+
+}
+
+function dibujarFila(Contacto, fila){
+    console.log(Contacto)
+    // dibujar el tr
+    const tBody = document.querySelector('tbody')
+    tBody.innerHTML = tBody.innerHTML + `
+    <tr>
+              <th scope="row">${fila}</th>
+              <td>${Contacto.nombre}</td>
+              <td>${Contacto.apellido}</td>
+              <td>${Contacto.mail}</td>
+              <td>${Contacto.telefono}</td>
+              <td>
+                <button class="btn btn-warning">
+                  <i class="bi bi-plus-square"></i>
+                </button>
+                <button class="btn btn-danger btn">
+                  <i class="bi bi-x-square"></i>
+                </button>
+                <button class="btn btn-info btn">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+            </tr>
+    `
+}
+
 // el resto de la logica del proyexto
 btnAgregar.addEventListener('click', abrirModal)
 Form.addEventListener('submit', crearContacto)
+crearDatosTabla();

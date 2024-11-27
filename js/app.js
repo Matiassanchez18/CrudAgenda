@@ -70,10 +70,17 @@ function crearDatosTabla() {
 // para poder agarrar el boton para eliminar contacto
 window.borrarContacto = (id)=>{
   console.log('desde borrar contacto')
-  
   // en que posicion del array esta el contacto que quiero eliminar, contacto hace referencia a los objetos guardados en la lista
   const posicionContacto = listaContactos.findIndex((contacto)=> contacto.id === id)
   console.log(posicionContacto)
+  // borrar contacto
+  listaContactos.splice(posicionContacto, 1)
+  // actualizar local estorage
+  guardarLocalStorage();
+  // borrar fila de la tabla
+  const tBody = document.querySelector('tbody')
+  tBody.removeChild(tBody.children[posicionContacto])
+ 
 }
 
 

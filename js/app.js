@@ -83,6 +83,13 @@ window.borrarContacto = (id)=>{
  
 }
 
+function Actualizar(){
+// abrir el modal cuando hago click en el boton
+// cargar los datos del contacto en el nuevo modal
+// buscar el contacto dentro del array a modificar
+// actualizar local storage
+// volver a dibujar la fila del contacto editado
+}
 
 function dibujarFila(Contacto, fila) {
   console.log(Contacto)

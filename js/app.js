@@ -1,6 +1,7 @@
 
 // si exporto mas de una cosa lo que quiero importar va con {contacto, url}
 import Contacto from "./classContacto.js"
+// import Swal from 'sweetalert2.js'
 
 // declaro variables globales
 
@@ -22,46 +23,61 @@ const url = document.querySelector('#url')
 
 // funciones
 function abrirModal() {
-    modalContacto.show()
+  modalContacto.show()
 }
 
 function crearContacto(e) {
-    e.preventDefault();
-    // validar datos de form
-    const nuevoContacto = new Contacto(nombre.value, apellido.value, telefono.value, email.value, apodo.value, url.value)
+  e.preventDefault();
+  // validar datos de form
+  const nuevoContacto = new Contacto(nombre.value, apellido.value, telefono.value, email.value, apodo.value, url.value)
 
-    listaContactos.push(nuevoContacto)
-    console.log(listaContactos)
+  listaContactos.push(nuevoContacto)
+  console.log(listaContactos)
 
-    guardarLocalStorage();
+  guardarLocalStorage();
 
-    LimpiarForm();
+  LimpiarForm();
+  // dibuja una fila
+  dibujarFila(nuevoContacto, listaContactos.length);
+
+  // mostrar un cartel intuitivo para el usuario
+  // Swal.fire({
+  //   title: "Good job!",
+  //   text: "You clicked the button!",
+  //   icon: "success"
+  // });
 }
 
 function LimpiarForm() {
-    Form.reset();
+  Form.reset();
 }
 
 function guardarLocalStorage() {
-    localStorage.setItem('agendakey', JSON.stringify(listaContactos));
+  localStorage.setItem('agendakey', JSON.stringify(listaContactos));
 }
 
 
 function crearDatosTabla() {
-    // preguntar si el array tiene informacion 
-    if (listaContactos.length > 0) {
-        // dibujar un afila por cada elemento del array, el map recorre toda el array
-     listaContactos.map((Contacto, indice) => dibujarFila(Contacto, indice + 1) )
+  // preguntar si el array tiene informacion 
+  if (listaContactos.length > 0) {
+    // dibujar un afila por cada elemento del array, el map recorre toda el array
+    listaContactos.map((Contacto, indice) => dibujarFila(Contacto, indice + 1))
 
-    }
+  }
 
 }
 
-function dibujarFila(Contacto, fila){
-    console.log(Contacto)
-    // dibujar el tr
-    const tBody = document.querySelector('tbody')
-    tBody.innerHTML = tBody.innerHTML + `
+// para poder agarrar el boton para eliminar contacto
+window.borrarContacto = ()=>{
+  console.log('desde borrar contacto')
+}
+
+
+function dibujarFila(Contacto, fila) {
+  console.log(Contacto)
+  // dibujar el tr
+  const tBody = document.querySelector('tbody')
+  tBody.innerHTML = tBody.innerHTML + `
     <tr>
               <th scope="row">${fila}</th>
               <td>${Contacto.nombre}</td>
@@ -72,9 +88,11 @@ function dibujarFila(Contacto, fila){
                 <button class="btn btn-warning">
                   <i class="bi bi-plus-square"></i>
                 </button>
-                <button class="btn btn-danger btn">
+
+                <button class="btn btn-danger"  onclick="borrarContacto()">
                   <i class="bi bi-x-square"></i>
                 </button>
+
                 <button class="btn btn-info btn">
                   <i class="bi bi-eye"></i>
                 </button>

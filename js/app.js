@@ -1,6 +1,7 @@
 
 // si exporto mas de una cosa lo que quiero importar va con {contacto, url}
 import Contacto from "./classContacto.js"
+import { validarCaracteres } from "./validaciones.js";
 // import Swal from 'sweetalert2.js'
 
 // declaro variables globales
@@ -29,6 +30,8 @@ function abrirModal() {
 function crearContacto(e) {
   e.preventDefault();
   // validar datos de form
+ if(validarCaracteres(nombre, 3 ,50)){
+  // crear objeto
   const nuevoContacto = new Contacto(nombre.value, apellido.value, telefono.value, email.value, apodo.value, url.value)
 
   listaContactos.push(nuevoContacto)
@@ -46,6 +49,11 @@ function crearContacto(e) {
   //   text: "You clicked the button!",
   //   icon: "success"
   // });
+ }else{
+  console.log('mostrar un mensaje de error')
+ }
+
+
 }
 
 function LimpiarForm() {

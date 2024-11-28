@@ -17,8 +17,7 @@ const apellido = document.querySelector('#apellido')
 const apodo = document.querySelector('#apodo')
 const telefono = document.querySelector('#telefono')
 const url = document.querySelector('#url')
-
-
+let contactoBoleano = true;
 
 
 // funciones
@@ -26,7 +25,18 @@ function abrirModal() {
   modalContacto.show()
 }
 
+function determinarAccion(){
+  if(contactoBoleano === true){
+    crearContacto(e);
+  }else{
+    window.Actualizar();
+  }
+}
+
+
 function crearContacto(e) {
+contactoBoleano = true;
+
   e.preventDefault();
   // validar datos de form
   const nuevoContacto = new Contacto(nombre.value, apellido.value, telefono.value, email.value, apodo.value, url.value)
@@ -68,10 +78,11 @@ function crearDatosTabla() {
 }
 
 // para poder agarrar el boton para eliminar contacto
-window.borrarContacto = (id)=>{
+window.borrarContacto = (id) => {
   console.log('desde borrar contacto')
   // en que posicion del array esta el contacto que quiero eliminar, contacto hace referencia a los objetos guardados en la lista
-  const posicionContacto = listaContactos.findIndex((contacto)=> contacto.id === id)
+  const posicionContacto = listaContactos.findIndex((contacto) => contacto.id === id)
+
   console.log(posicionContacto)
   // borrar contacto
   listaContactos.splice(posicionContacto, 1)
@@ -80,7 +91,7 @@ window.borrarContacto = (id)=>{
   // borrar fila de la tabla
   const tBody = document.querySelector('tbody')
   tBody.removeChild(tBody.children[posicionContacto])
- 
+
 }
 
 
@@ -96,10 +107,9 @@ function dibujarFila(Contacto, fila) {
               <td>${Contacto.mail}</td>
               <td>${Contacto.telefono}</td>
               <td>
-                <button class="btn btn-warning">
-                  <i class="bi bi-plus-square"></i>
-                </button>
-
+               <button class="btn btn-warning">
+               <i class="bi bi-plus-square" onclick="Actualizar('${Contacto.id}')"></i>
+              </button>
                 <button class="btn btn-danger"  onclick="borrarContacto('${Contacto.id}')">
                   <i class="bi bi-x-square"></i>
                 </button>
@@ -111,6 +121,40 @@ function dibujarFila(Contacto, fila) {
             </tr>
     `
 }
+
+window.Actualizar = (id) => {
+ contactoBoleano = false;
+  // Abrir el modal cuando se hace clic en el botón
+  abrirModal();
+
+  // Buscar la posición del contacto que se va a actualizar en el array
+  const posicionActualizar = listaContactos.findIndex((contacto) => contacto.id === id);
+  console.log(posicionActualizar);
+
+  // Obtener el contacto que se va a actualizar
+  const ContactoActualizar = listaContactos[posicionActualizar];
+
+  nombre.value = ContactoActualizar.nombre;
+  email.value = ContactoActualizar.mail;
+  apellido.value = ContactoActualizar.apellido;
+  apodo.value = ContactoActualizar.apodo;
+  telefono.value = ContactoActualizar.telefono;
+  url.value = ContactoActualizar.url;
+
+  // Modificar directamente el objeto en el array
+ ContactoActualizar.nombre = nombre.value;
+  ContactoActualizar.mail = email.value;
+  ContactoActualizar.apellido = apellido.value;
+  ContactoActualizar.apodo = apodo.value;
+  ContactoActualizar.telefono = telefono.value;
+  ContactoActualizar.url = url.value;
+
+  
+};
+
+
+
+
 
 // el resto de la logica del proyexto
 btnAgregar.addEventListener('click', abrirModal)

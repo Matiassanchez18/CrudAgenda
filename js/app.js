@@ -104,13 +104,19 @@ function dibujarFila(Contacto, fila) {
                   <i class="bi bi-x-square"></i>
                 </button>
 
-                <button class="btn btn-info btn">
+                <button class="btn btn-info btn" onclick="verDetalle('${Contacto.id}')">
                   <i class="bi bi-eye"></i>
                 </button>
               </td>
             </tr>
     `
 }
+
+// para agregar un href, window.local.href sirve para agregar un link, se le agrega window.location.origin que nos da como valor el host de la pagina y el /pages/detalleContacto.html es siempre el mismo, el ?id sirve para agregar un valor al href y que nos muestre los datos del contacto que quiero. 
+window.verDetalle = (id)=>{
+window.location.href =  `${window.location.origin}/pages/detalleContacto.html?id${id} `
+}
+
 
 // el resto de la logica del proyexto
 btnAgregar.addEventListener('click', abrirModal)

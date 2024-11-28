@@ -29,7 +29,7 @@ function determinarAccion(){
   if(contactoBoleano === true){
     crearContacto(e);
   }else{
-    window.Actualizar();
+    window.Actualizar(id, e);
   }
 }
 
@@ -122,7 +122,8 @@ function dibujarFila(Contacto, fila) {
     `
 }
 
-window.Actualizar = (id) => {
+window.Actualizar = (id,e ) => {
+  e.preventDefault()
  contactoBoleano = false;
   // Abrir el modal cuando se hace clic en el botón
   abrirModal();
@@ -158,5 +159,5 @@ window.Actualizar = (id) => {
 
 // el resto de la logica del proyexto
 btnAgregar.addEventListener('click', abrirModal)
-Form.addEventListener('submit', crearContacto)
+Form.addEventListener('submit', determinarAccion)
 crearDatosTabla();

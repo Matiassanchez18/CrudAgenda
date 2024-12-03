@@ -24,8 +24,12 @@ if (contactoBuscado) {
       <h5 class="card-title">${contactoBuscado.nombre} ${contactoBuscado.apellido}</h5>
       <ul>
        
-        <li><b>Teléfono:</b> ${contactoBuscado.telefono}</li>
-        <li><b>Apodo:</b> ${contactoBuscado.apodo}</li>
+        <li><h5><b>nombre:</b> ${contactoBuscado.nombre}</h5></li> 
+        <li><h5><b>Apodo:</b> ${contactoBuscado.apodo}</h5></li>
+        <li><h5><b>Teléfono:</b> ${contactoBuscado.telefono}</h5></li>
+        <li><h5><b>mail:</b> ${contactoBuscado.mail}</h5></li>
+        
+       
       </ul>
     </div>
   `;
